@@ -29,3 +29,25 @@ def fahrenheit_converter(C):
     return str(fahrenheit) + '%f'
 
 fahrenheit_converter(32)
+
+
+chang = 3
+kuang = 4
+xie = chang * chang + kuang * kuang
+print('The right triangle third side\'s lengh is',xie ** 0.5)
+
+print('   *','  * *',' * * *','   |   ',sep='\n')
+
+
+
+def text_filter(word, censored_word = 'lame', changed_word = 'Awesome'):
+    return word.replace(censored_word, changed_word)
+def text_create(name, msg):
+    desktop_path = './'
+    full_path = desktop_path + name + '.txt'
+    file = open(full_path, 'w')
+    file.write(text_filter(msg))
+    file.close()
+    print("done")
+
+text_create('nihao', 'lame\n')
