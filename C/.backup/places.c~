@@ -1,0 +1,20 @@
+/*
+ * 求分段函数， y=f(x)
+ * 生词 地方  place[pleɪs]
+ */
+
+#include <stdio.h>
+
+void places()
+{
+    int x,f,y;
+
+    scanf("%d", &x);
+    printf("%d\n", x);
+}
+
+int main()
+{
+  places();
+  return 0;
+}
