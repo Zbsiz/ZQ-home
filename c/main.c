@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "rings.c"   /* Press any key to continue . . . */
+#include "band.c"  /* 素数 */
 
 int main(int argc, char* argv[])
 {
   rings();
+  band();
 
   printf("nihao!\n");  
 

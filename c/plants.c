@@ -1,0 +1,58 @@
+/*
+ * C项目 记录学生的数据
+ * 生词 植物   plant/[plɑːnt]
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+typedef struct 
+{
+  int id;
+  char name[16];
+  int scores[3];
+} Student;
+Student nihao[100];
+
+int input(Student* s)
+{
+  printf("Pleace enter data：");
+  scanf("%d", &s->id);
+  printf("name: ");
+  scanf("%15s", &s->name);
+  printf("scores: ");
+  scanf("%d,%d,%d", &s->scores[0], &s->scores[1], &s->scores[2]);
+}
+
+int main()
+{
+
+  int select;
+  for (;;)
+  {
+    printf("Pleace select :\n"
+        "\t1) Enter student data\n"
+        "\t2) show student data\n");
+    scanf("%d", &select);
+
+    Student s;
+    switch (select)
+    {
+      case 1:
+        input(&s);
+        break;
+      default:
+        printf("Error!\n");
+    }
+  }
+
+  return 0;
+}
+
+
+
+/*
+ * 只是实现了输入保存数据，还是觉得太简单，没有做完
+ */

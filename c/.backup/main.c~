@@ -36,5 +36,7 @@ int main(int argc, char* argv[])
     if (i%7 == 6)
       printf("\n");
   }
+  printf("\n");
+
   return 0;
 }

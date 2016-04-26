@@ -1,4 +1,3 @@
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
 "       Amir Salihefendic
@@ -436,8 +435,19 @@ endfunction
 
 
 
-" ---------------- 分隔 --------------------------- "
-" ---------------- 分隔 --------------------------- "
+
+
+
+
+
+
+" ------------------------------------------------------ "
+"                    分割线
+" ------------------------------------------------------ "
+
+
+
+
 
 
 
@@ -460,6 +470,8 @@ map <special> gb :w!<CR>
 map <special> gh :q!<CR>
 map <special> ge :x!<CR>
 map <special> gi :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
+map <special> gI :!gcc % -o .c_script/%.out ; and ./.c_script/%.out
+map <special> gs :nohls<CR>
 map <special> <F4> :%!xxd<CR>
 map <special> <F5> :%!xxd -r<CR>	
 map <special> <F12> :sp /etc/vim/vimrc<CR>	

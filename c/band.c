@@ -3,36 +3,50 @@
  * 生词 乐队   band/[bænd]
  */
 
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-using namespace std;
-const long long size=100000;//修改size的数值以改变最终输出的大小
- 
-long long zhishu[size/2];
-void work(){//主要程序
-    zhishu[1]=2;
-    long long k=2;
-    for(long long i=3;i<=size;i++){//枚举每个数
-        bool ok=1;
-        for(long long j=1;j<k;j++){//枚举已经得到的质数
-            if(i%zhishu[j]==0){
-                ok=!ok;
-                break;
-            }
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void band()
+{
+  int i,j,num;
+  int p,q,flagp,flagq;
+
+  printf("Place input a even number: ");
+  scanf("%d", &num);
+
+  if (((num%2)!=0) || (num<=4))
+    printf("data error \n");
+  else
+  {
+    p=1;
+    do
+    {
+      p=p+1;
+      q=num-p;
+      flagp=1;
+      flagq=1;
+      for (i=2; i<=(int)(floor(sqrt((double)(p)))); i++)
+      {
+        if ((p%i) == 0)
+        {
+          flagp=0;
+          break;
         }
-        if(ok){
-            zhishu[k]=i;
-            cout<<"count"<<k<<' '<<i<<endl;
-            k++;
+      }
+
+      j=2;
+      while (j<=(int)(floor(sqrt((double)(q)))))
+      {
+        if ((q%j) == 0)
+        {
+          flagq=0;
+          break;
         }
-    }
-}
- 
- 
-int main(){
-    freopen("zhishu.out","w",stdout);
-    cout<<"count1 2"<<endl;
-    work();
-    return 0;
+        j++;
+      }
+    } while (flagp*flagq == 0);
+
+    printf("%d = %d + %d \n", num, p, q);
+  }
 }

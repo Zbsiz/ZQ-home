@@ -1,0 +1,51 @@
+/*
+ *
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#define Width 6
+#define Length 7
+
+int main()
+{
+  int i=0,j=0;
+  int array1[Length][Width]={0};
+  int array2[Width][Length]={0};
+
+  for (i=0; i<Length; i++)
+  {
+    array1[i][j]=2*i+j;
+  }
+
+  printf("转置前的矩阵为：\n");
+
+  for (i=0; i<Length; i++)
+  {
+    for (int j=0; j<Width; j++)
+    {
+      printf("%3d", array1[i][j]);
+    }
+    printf("\n");
+  }
+
+  for (i=0; i<Width; i++)
+  {
+    for (int j=0; j<Length; j++)
+      array2[i][j]=array1[j][i];
+    printf("\n");
+  }
+
+  printf("转置后的矩阵：\n");
+
+  for (i=0; i<Width; i++)
+  {
+    for (j=0; j<Length; j++)
+    {
+      printf("%3d", array2[i][j]);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
