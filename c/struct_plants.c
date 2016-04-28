@@ -32,9 +32,11 @@ int main()
   int select;
   for (;;)
   {
-    printf("Pleace select :\n"
-        "\t1) Enter student data\n"
-        "\t2) show student data\n");
+    printf(
+        "\n1) Enter student data\n"
+        "2) show student data\n"
+        "4) exit\n");
+    printf("\nPleace select :\n");
     scanf("%d", &select);
 
     Student s;
@@ -43,8 +45,8 @@ int main()
       case 1:
         input(&s);
         break;
-      default:
-        printf("Error!\n");
+      case 4:
+        exit(0);
     }
   }
 

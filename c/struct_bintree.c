@@ -1,3 +1,7 @@
+/*
+ * 生词 bintree   二叉树
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,7 +26,7 @@ node* create(char *question)
   node *n = malloc(sizeof(node));
   n->question = strdup(question);
   n->no = NULL;
-  n-yes = NULL;
+  n->yes = NULL;
   return n;
 }
 

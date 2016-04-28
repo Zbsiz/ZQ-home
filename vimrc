@@ -469,15 +469,15 @@ map <special> <F3> :q!<CR>
 map <special> gb :w!<CR>
 map <special> gh :q!<CR>
 map <special> ge :x!<CR>
-map <special> gi :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
-map <special> gI :!gcc % -o .c_script/%.out ; and ./.c_script/%.out
+map <special> gi :!gcc % -g -o .c_script/%.out ; and ./.c_script/%.out<CR>
+map <special> gI :!gcc % -g -o .c_script/%.out ; and ./.c_script/%.out
 map <special> gs :nohls<CR>
 map <special> <F4> :%!xxd<CR>
 map <special> <F5> :%!xxd -r<CR>	
 map <special> <F12> :sp /etc/vim/vimrc<CR>	
-map <special> <F9> :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
-map <special> <F10> :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
-map <special> <F11> :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
+map <special> <F9> :!gcc % -g -o .c_script/%.out ; and ./.c_script/%.out<CR>
+map <special> <F10> :!gcc % -g -o .c_script/%.out ; and ./.c_script/%.out<CR>
+map <special> <F11> :!gcc % -g -o .c_script/%.out ; and ./.c_script/%.out<CR>
 
 set vb t_vb= " 禁用 vb 错误提示音
 
