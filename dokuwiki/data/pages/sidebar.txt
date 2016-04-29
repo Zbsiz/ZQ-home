@@ -1,0 +1,8 @@
+==== 了解DokuWiki ====
+    * dns
+      * [[wiki:bind|bind]]
+    * web
+      * [[wiki:nginx|nginx]]
+      * [[wiki:apache|apache]]
+    * file
+      * [[wiki:samba|samba]]
