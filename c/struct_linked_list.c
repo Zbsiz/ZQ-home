@@ -32,7 +32,7 @@ Student *create(int cr_id, char *cr_name, char *cr_desc, int cr_year)
 void happy_small(Student *sos)
 {
   for (; sos!=NULL; sos=sos->next)
-    printf("ID=[%d]\t%s,%s,%d\n", sos->id, sos->name, sos->describe, sos->years_old);
+    printf("\nID = [%d]\nName = [%s]\nDescribe = [%s]\nYear_old = [%d]\n", sos->id, sos->name, sos->describe, sos->years_old);
 }
   
 void release(Student *start)
@@ -45,6 +45,25 @@ void release(Student *start)
     free(i->name);
     free(i);
   }
+}
+
+void Insert(int in_id, char *in_name, char *in_desc, int in_year)
+{
+  Student *start = NULL;
+  Student *next = NULL;
+  Student *current = NULL;
+  scanf("%d %s %s %d", &in_id, &in_name, &in_desc, &in_year);
+  printf("%d %s %s %d", in_id, in_name, in_desc, in_year);
+  /*
+  for (; scanf("%d %s %s %d", &in_id, &in_name, &in_desc, &in_year) != NULL; current=next)
+  {
+    next = create(in_name);
+    if (start == NULL)
+      start = next;
+    if (current != NULL)
+      current->next = next;
+  }
+  */
 }
 
 int main()
@@ -69,15 +88,11 @@ int main()
     {
       case 1:
         printf("\nEnter ID: ");
-        scanf("%d", &ma_id);
-        printf("Enter name: ");
-        scanf("%s", &ma_name);
-        printf("Enter describe: ");
-        scanf("%s", &ma_desc);
-        printf("Enter year_old: ");
-        scanf("%d", &ma_year);
+
+        Insert(ma_id, ma_name, ma_desc, ma_year);
+        
   
-        Student *so = create(ma_id,ma_name,ma_desc,ma_year);
+        //Student *so = create(ma_id,ma_name,ma_desc,ma_year);
   
         /*
         char name_1[80] = "nihao";
@@ -87,8 +102,8 @@ int main()
         so->next = ao;
         */
   
-        happy_small(so);
-        release(so);
+        //happy_small(so);
+        //release(so);
         break;
         //continue;
       default:
