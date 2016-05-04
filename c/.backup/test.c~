@@ -2,6 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+typedef struct
+{
+  char *sos;
+} hehe;
+
 int main()
 {
   int ma_id;
@@ -9,9 +15,6 @@ int main()
   char ma_desc[80];
   int ma_year;
 
-//  scanf("%d %s %d", &ma_id, &ma_name, &ma_year);
-  strcpy(ma_name, ma_desc);
-  printf("%d,%s,%d", ma_id, ma_name, ma_year);
 
-  fgets(ma_desc, 79, stdin);
+  return 1 == 1;
 }

@@ -1,3 +1,7 @@
+/*
+ * 用户自动可以插入，删除，遍历链表
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

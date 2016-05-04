@@ -17,7 +17,7 @@ int main()
   island *start   = NULL;
   island *current = NULL;
   island *next    = NULL;
-  island first    = {0};
+
   char name[80], ma_next[4];
   int ma_select, ma_id;
 
