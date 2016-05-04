@@ -71,3 +71,9 @@ void rings()
 */
 
 }
+
+
+int main()
+{
+  rings();
+}

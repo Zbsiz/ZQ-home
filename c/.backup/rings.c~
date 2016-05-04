@@ -3,6 +3,7 @@
  * 生词 n戒指 v响铃   rings/[rɪŋ]
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 
 void rings()
