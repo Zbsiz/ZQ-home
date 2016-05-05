@@ -3,6 +3,19 @@
  *
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void find()
+{
+  int i;
+  puts("Search results: ");
+  puts("-----
+
+
+
 
 #include <stdio.h>
 #include <string.h>
