@@ -1,0 +1,3 @@
+/home/sysop/github/ZQ-home/c/opencv/CMakeFiles/edit_cache.dir
+/home/sysop/github/ZQ-home/c/opencv/CMakeFiles/rebuild_cache.dir
+/home/sysop/github/ZQ-home/c/opencv/CMakeFiles/DisplayImage.dir
