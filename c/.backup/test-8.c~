@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+typedef struct Stest
+{
+  int id;
+  char *name;
+} Stest;
+
+int main()
+{
+  Stest first = {0};
+
+  scanf("%d", &(first.id));
+  scanf("%s", &(first.name));
+  printf("%d,%s\n", first.id, first.name);
+
+  return 0;
+}

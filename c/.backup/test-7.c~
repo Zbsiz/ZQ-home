@@ -18,12 +18,14 @@ typedef struct Student {
 
 Student first = {0};
 
-void add_start(Student *obj)    /*  用于插入一个对象到链表中  */
+/*  用于插入一个对象到链表中  */
+void add_start(Student *obj)    
 {
   obj->next = first.next;
   first.next = obj;
 }
 
+/* 这个插入是向后追加的    */
 void add_end(Student *obj)
 {
   Student *p = &first;
@@ -33,7 +35,8 @@ void add_end(Student *obj)
   obj->next = NULL;
 }
 
-void display(Student *msg)    /* 遍历链表  */
+/* 遍历链表  */
+void display(Student *msg)    
 {
   while (msg)
   {
@@ -50,18 +53,28 @@ void user_input(Student *obj)
   char name[14];
   printf("名字： ");
   scanf("%s", &name);
-  obj->name = name;
+  obj->name = strdup(name);
 }
+
+void release(Student *obj)
+{
+  Student *next = NULL;
+  while (obj != NULL)
+  {
+    next = obj->next;
+    free(obj->name);
+    free(obj);
+    obj = next;
+  }
+}
+    
   
 int main()
 {
-//  Student *obj_start = NULL;
-//  Student *obj_next = NULL;
-
   while (1)
   {
     int ma_select;
-    printf("Select a number: "
+    printf("\nSelect a number: "
         "\n1) Add node"
         "\n2) Show linked_list"
         "\n4) Exit"
@@ -76,9 +89,12 @@ int main()
           Student *obj_current = (Student *)malloc(sizeof(Student));
           user_input(obj_current);
           if (obj_current->id == 4)
+          {
+            free(obj_current->name);
+            free(obj_current);
             break;
+          }
           add_end(obj_current);
-          printf("%d\n", obj_current->name);
         }
         break;
       case 2:
@@ -86,9 +102,10 @@ int main()
         break;
       case 4:
         printf("\nBye!\n");
+        release(first.next);
         exit(0);
     }
   }
-
+  
   return 0;
 }
