@@ -5,7 +5,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <termios.h>
+#include <unistd.h>
 
+  /*
 void rings()
 {
   system( "stty raw -echo "); 
@@ -13,15 +16,12 @@ void rings()
   getchar(); 
   system( "stty -raw echo "); 
   printf( "\n"); 
+  */
 
   /*  上面这个是linux中的输入任意字符后继续    */
 
-  /* 这个网上其它大牛的代码 
+  /* 这个网上其它大牛的代码  */
 
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <termios.h>
-	#include <unistd.h>
 	 
 	int getch();
 	 
@@ -29,14 +29,13 @@ void rings()
 	 
 	int main()
 	{
-	   printf("Hello world!\n");
 	   press_key();
 	   return 0;
 	}
 	 
 	void press_key()
 	{
-	   printf("Press any key to continue...\n");
+	   printf("Press any key to continue...");
 	   getch();
 	}
 	 
@@ -67,7 +66,3 @@ void rings()
 	 
 	   return c;
 	}
-
-*/
-
-}

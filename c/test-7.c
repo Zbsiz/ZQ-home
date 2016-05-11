@@ -2,6 +2,7 @@
  * 还是链表结构，这个是看了邵发的视频的
  * 功能有插入节点，可以使开头也可以是结尾
  *
+ * 之后追加了删除插入功能
  */
 
 #include <stdio.h>
@@ -45,6 +46,41 @@ void display(Student *msg)
   }
 }
 
+void insert(Student* obj)
+{
+	Student* cur = first.next; // 当前节点current
+	Student* pre = &first;  // 上一个节点previous
+	while(cur)
+	{		
+		if(obj->id < cur->id) // 找到这个位置
+			break;
+
+		pre = cur;
+		cur = cur->next;  // 找到最后一个对象
+	}
+
+	// 插入到pre节点的后面
+	obj->next = pre->next;
+	pre->next = obj;
+}
+
+void delete(Student *obj)
+{
+  Student *cur = first.next;
+  Student *pre = &first;
+  while (cur)
+  {
+    if (obj->id == cur->id)
+      break;
+    pre = cur;
+    cur = cur->next;
+  }
+  pre->next = cur->next;
+  free(cur->name);
+  free(cur);
+}
+
+
 void user_input(Student *obj)
 {
   printf("学号： ");
@@ -78,7 +114,9 @@ int main()
     printf("\nSelect a number: "
         "\n1) Add node"
         "\n2) Show linked_list"
-        "\n4) Exit"
+        "\n3) Insert node"
+        "\n4) Delete node"
+        "\n5) Exit"
         "\n\nEnter: ");
     scanf("%d", &ma_select);
 
@@ -95,18 +133,34 @@ int main()
             free(obj_current);
             break;
           }
-          add_end(obj_current);
+          insert(obj_current);
         }
         break;
       case 2:
         display(first.next);
         break;
+      case 3:
+        for (int case_num=0; case_num<1; case_num++)
+        {
+        	Student *case_name = (Student*)malloc (sizeof(Student));
+          user_input(case_name);
+        	insert(case_name);
+        }
+        break;
       case 4:
+        for (int case_num=0; case_num<1; case_num++)
+        {
+        	Student *case_name = (Student*)malloc (sizeof(Student));
+          user_input(case_name);
+          delete(case_name);
+          free(case_name->name);
+          free(case_name);
+        }
+        break;
+      case 5:
         printf("\nBye!\n");
         release(first.next);
         exit(0);
     }
   }
-  
-  return 0;
 }
