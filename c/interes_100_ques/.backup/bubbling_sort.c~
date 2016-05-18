@@ -1,10 +1,16 @@
+/*
+ *
+ * 冒泡排序，随意输入定义数量的数
+ */
+
 #include <stdio.h>
-#define N 10
+
+int N = 10;
 
 int main()
 {
   int i, j, a[N], t, count=0;
-  printf("Please ener: \n");
+  printf("Please enter(%d): \n", N);
   
   for (i=0; i<N; i++)
     scanf("%d", &a[i]);
