@@ -66,8 +66,6 @@
  printf("输入错误!\n");
  
  printf("最终结果:%.2f\n",result);
- system("pause");
- system("cls");
  getchar();
  }
  return 0;

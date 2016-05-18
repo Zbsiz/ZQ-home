@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main()
+{
+  long fib1=1, fib2=1,fib;    // 默认fib1表示第一个月的数量，fib2表示第二个月的数量
+  int i;
+  
+  for (i=1; i<=15; i++)     // 每次求两个值，所以只用15次
+  { 
+    printf("%12ld%12ld", fib1, fib2);    // 12表示输出整型个数，不足会补空值等宽，ld 表示长型整数
+
+    if (i%2 == 0)
+      printf("\n");
+    fib1=fib1+fib2;     // fib1 表示现在表示第三个月的数量
+    fib2=fib1+fib2;      // 相对的，fib2也表示第四个月的数量，以此类推，循环之后，数量又是下一个月的
+  }
+
+  return 0;
+}
+

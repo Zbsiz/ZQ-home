@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main()
+{
+    int a;
+    float b=0.0;
+
+    for (a=5; a>=1; a--)
+    {
+      b=(1000.0+b)/(1+0.0063*12);
+    }
+    
+    printf("%0.2f\n", b);
+    return 0;
+}
