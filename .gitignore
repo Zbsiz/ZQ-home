@@ -1,3 +1,6 @@
 .c_script/*
 .c_script/
 *.out
+*~
+.backup/
+.backup/*
