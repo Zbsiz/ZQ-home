@@ -468,6 +468,7 @@ map <special> <F2> :x!<CR>
 map <special> <F3> :q!<CR>
 map <special> gb :w!<CR>
 map <special> gh :q!<CR>
+map <special> gH :qall!<CR>
 map <special> ge :x!<CR>
 map <special> gi :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
 map <special> gI :!gcc % -o .c_script/%.out ; and ./.c_script/%.out
