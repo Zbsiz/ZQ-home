@@ -5,13 +5,14 @@
  *	BUG: try ls2 /tmp  
  */
 #include	<stdio.h>
-#include <string.h>
+#include  <string.h>
+#include  <stdlib.h>
 #include	<sys/types.h>
 #include	<dirent.h>
 #include	<sys/stat.h>
 
 void do_ls(char[]);
-void dostat(char *);
+void dostat(char *, char *);
 void show_file_info( char *, struct stat *);
 void mode_to_letters( int , char [] );
 char *uid_to_name( uid_t );
@@ -23,7 +24,7 @@ int main(int ac, char *av[])
 		do_ls( "." );
 	else
 		while ( --ac ){
-			printf("%s:\n", *++av );
+			printf("%s:\n\n", *++av );
 			do_ls( *av );
 		}
 }
@@ -35,22 +36,33 @@ void do_ls( char dirname[] )
 {
 	DIR		*dir_ptr;		/* the directory */
 	struct dirent	*direntp;		/* each entry	 */
+  char *fullpath;
+
+  fullpath = (char *) malloc(strlen(dirname) + 1 + 255 + 1);
 
 	if ( ( dir_ptr = opendir( dirname ) ) == NULL )
 		fprintf(stderr,"ls1: cannot open %s\n", dirname);
 	else
 	{
 		while ( ( direntp = readdir( dir_ptr ) ) != NULL )
-			dostat( direntp->d_name );
+    {
+      if ((strcmp(dirname, ".") != 0) && (strcmp(dirname, "..") != 0))
+      {
+        sprintf(fullpath, "%s/%s", dirname, direntp->d_name);
+        dostat(fullpath, direntp->d_name);
+      }
+      else
+			  dostat(direntp->d_name, direntp->d_name );
+    }
 		closedir(dir_ptr);
 	}
 }
 
-void dostat( char *filename )
+void dostat(char *fullpath, char *filename )
 {
 	struct stat info;
 
-	if ( stat(filename, &info) == -1 )		/* cannot stat	 */
+	if ( stat(fullpath, &info) == -1 )		/* cannot stat	 */
 		perror( filename );			/* say why	 */
 	else					/* else show info	 */
 		show_file_info( filename, &info );
