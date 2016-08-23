@@ -1,12 +1,3 @@
-/*
- * cp1.c
- * version 1 of cp -- user read and write with tunable buffer size
- *
- * usage: cp1 src dest
- *
- */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,10 +6,6 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-
-#define BUFFERSIZE 4096
-#define COPYMODE 0644
 
 
 void oops(char *, char *);
@@ -53,6 +40,11 @@ int main(int ac, char **av)
           if ((strcmp(direntp->d_name, ".") != 0) &&
               (strcmp(direntp->d_name, "..") != 0))
           {
+            if (direntp->d_type == 4)
+            {
+              fprintf(stderr, "Error: %s is Directory\n", direntp->d_name);
+              continue;
+            }
             srcfullpath = file_fullpath(direntp->d_name, av[arg]);
             destfullpath = file_fullpath(av[arg], av[ac-1]);
             mkdir(destfullpath, 0755);
@@ -126,15 +118,15 @@ char *file_fullpath(char *src, char *dest)
 void copy_to_dest(char *src, char *dest)
 {
   int in_fd, out_fd, n_chars;
-  char buf[BUFFERSIZE];
+  char buf[4096];
 
   if ((in_fd = open(src, O_RDONLY)) == -1)
     oops("Cannot open", src);
 
-  if ((out_fd = creat(dest, COPYMODE)) == -1)
+  if ((out_fd = creat(dest, 0644)) == -1)
     oops("Cannot creat", dest);
 
-  while ((n_chars = read(in_fd, buf, BUFFERSIZE)) > 0)
+  while ((n_chars = read(in_fd, buf, 4096)) > 0)
     if (write(out_fd, buf, n_chars) != n_chars)
       oops("Write error to", dest);
 
