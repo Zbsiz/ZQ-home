@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <sys/types.h>
+#include <utmp.h>
+#include <fcntl.h>
+
+#define UTSIZE (sizeof(struct utmp))
+#define NRECS 16
+#define NULLNT ((struct utmp*)NULL) 
+
+
+static char utmpbuf[NRECS * UTSIZE];
+static int num_rec = 0;
+static int cur_rec = 0;
+static int fd_utmp = -1;
+
+
+int utmp_open(char *filename)
+{
+  fd_utmp = open(filename, O_RDONLY);
+  return fd_utmp;
+}
+
+int utmp_read()
+{
+  int utre_num;
+  utre_num = read(fd_utmp, utmpbuf, NRECS * UTSIZE);
+  num_rec = utre_num/UTSIZE;
+}
+
+struct utmp *utmp_next()
+{
+  struct utmp *utne_buf;
+
+  if (fd_utmp == -1)
+    return NULLNT;
+  if (cur_rec == num_rec && utmp_read() == 0)
+    return NULLNT;
+
+  printf("OK\n");
+  utne_buf = (struct utmp*)&utmpbuf[cur_rec * UTSIZE];
+  cur_rec++;
+  return utne_buf;
+}
+
+int utmp_close()
+{
+  close(fd_utmp);
+}

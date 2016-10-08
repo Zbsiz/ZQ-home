@@ -6,31 +6,37 @@
 #include <string.h>
 
 
-void do_ls(char *);
+void do_ls(char *, int);
 void dostat(char *, char *);
 void show_file_info(char *, char *, struct stat *);
 void mode_to_letters(int , char *);
 char *uid_to_name(uid_t);
 char *gid_to_name(gid_t);
+int isadir(char *);
 
 
 int main(int ac, char **av)
 {
+  int R_flag;
+  R_flag = 0;
+
   if (ac == 1)
-    do_ls(".");
+    do_ls(".", R_flag);
   else
     while (--ac)
-    {
-      printf("%s: \n\n", *++av);
-      do_ls(*av);
-    }
+      if (strcmp("-R", *++av) == 0)
+        R_flag = 1;
+      else
+        do_ls(*av, R_flag);
 }
 
-void do_ls(char *dirname)
+void do_ls(char *dirname, int subdirs)
 {
   DIR *dir_ptr;
   struct dirent *direntp;
   char *fullpath;
+
+  printf("%s:\n", dirname);
 
   fullpath = (char *) malloc(strlen(dirname) + 1 + 255 + 1);
 
@@ -48,7 +54,29 @@ void do_ls(char *dirname)
       else
         dostat(direntp->d_name, direntp->d_name);
     }
+
+    if (subdirs)
+    {
+
+      rewinddir(dir_ptr);
+
+      while ((direntp = readdir(dir_ptr)) != NULL)
+      {
+        if (strcmp(direntp->d_name, ".") == 0 || (strcmp(direntp->d_name, "..") == 0))
+          continue;
+
+        sprintf(fullpath, "%s/%s", dirname, direntp->d_name);
+
+        if (isadir(fullpath))
+        {
+          putchar('\n');
+          do_ls(fullpath, subdirs);
+        }
+      }
+    }
+
     closedir(dir_ptr);
+    free(fullpath);
   }
 }
 
@@ -134,4 +162,12 @@ char *gid_to_name(gid_t gid)
   }
   else
     return grp_ptr->gr_name;
+}
+
+
+int isadir(char *str)
+{
+  struct stat info;
+
+  return (lstat(str, &info) != -1 && S_ISDIR(info.st_mode));
 }

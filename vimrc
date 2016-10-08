@@ -450,6 +450,7 @@ endfunction
 
 
 
+autocmd FileType * normal gg
 
 set nu " 显示行号
 
@@ -470,6 +471,7 @@ map <special> gb :w!<CR>
 map <special> gh :q!<CR>
 map <special> gH :qall!<CR>
 map <special> ge :x!<CR>
+map <special> gE :xall!<CR>
 map <special> gi :!gcc % -o .c_script/%.out ; and ./.c_script/%.out<CR>
 map <special> gI :!gcc % -o .c_script/%.out ; and ./.c_script/%.out
 map <special> g= :!g++ -std=c11 % -o .c_script/%.out ; and ./.c_script/%.out<CR>
@@ -557,3 +559,4 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+"autocmd BufNewFile,BufRead *.* :AutoSaveToggle<CR>
